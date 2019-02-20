@@ -16,14 +16,12 @@ public class FeedbackServiceImpl implements IFeedbackService {
     private FeedbackRepository feedbackRepository;
 
     @Override
-    public List<Feedback> getAllFeedback() {
+    public List<Feedback> getAllFeedbacks() {
         return feedbackRepository.findAll();
     }
 
     @Override
-    public List<Feedback> getFeedbackByFio(String fio) {
-        return feedbackRepository.findByFio(fio);
-    }
+    public Feedback getFeedbackById(Integer id) { return feedbackRepository.getOne(id); }
 
     @Override
     public Feedback create(Feedback feedback) {
@@ -40,6 +38,5 @@ public class FeedbackServiceImpl implements IFeedbackService {
         Feedback feedback = feedbackRepository.findById(id).get();
         if(feedback != null)
             feedbackRepository.delete(feedback);
-
     }
 }

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
-
-    List<Feedback> findByFio(String fio) throws DataAccessException;
+    
 
 }
