@@ -14,7 +14,7 @@ public class CoreController {
     @Autowired
     private IUserService userService;
 
-    @GetMapping("/auth/{username}/[password]")
+    @GetMapping("/auth/{username}/{password}")
     public Users getUserByUsernameAndPassword(@PathVariable(name = "username") String username,
                                               @PathVariable(name = "password") String password){
         return userService.getUserByUsernameAndPassword(username, password);
