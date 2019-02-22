@@ -7,6 +7,7 @@ import java.util.List;
 public interface IUserService {
 
     List<Users> getAllUsers();
+    Users getUserByUsernameAndPassword(String username, String password);
     Users getById(Integer id);
     Users getByUsername(String username);
     Users create(Users user);
