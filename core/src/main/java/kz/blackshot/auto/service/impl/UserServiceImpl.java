@@ -20,6 +20,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public Users getUserByUsernameAndPassword(String username, String password) {
+        return userRepository.findByUsernameAndPassword(username, password);
+    }
+
+    @Override
     public Users getById(Integer id) {
         return userRepository.findById(id).get();
     }
