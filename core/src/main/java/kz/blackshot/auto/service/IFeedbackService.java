@@ -5,7 +5,7 @@ import kz.blackshot.auto.model.Feedback;
 import java.util.List;
 
 public interface IFeedbackService {
-    List<Feedback> getAllFeedbacks();
+    List<Feedback> getAllFeedback();
     Feedback getFeedbackById(Integer id);
     Feedback create(Feedback feedback);
     Feedback update(Feedback feedback);
