@@ -16,7 +16,7 @@ public class FeedbackServiceImpl implements IFeedbackService {
     private FeedbackRepository feedbackRepository;
 
     @Override
-    public List<Feedback> getAllFeedbacks() {
+    public List<Feedback> getAllFeedback() {
         return feedbackRepository.findAll();
     }
 
