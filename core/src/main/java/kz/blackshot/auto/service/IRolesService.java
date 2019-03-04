@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IRolesService {
 
-    List<Roles> read();
+    List<Roles> getRoles();
 
     Roles get(Integer id);
 
