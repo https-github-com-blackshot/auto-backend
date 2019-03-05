@@ -1,16 +1,12 @@
 package kz.blackshot.auto.controller;
 
-import kz.blackshot.auto.model.ServiceBook;
-import kz.blackshot.auto.model.ServiceBookContent;
-import kz.blackshot.auto.model.Users;
-import kz.blackshot.auto.service.IRolesService;
-import kz.blackshot.auto.service.IServiceBookContentService;
-import kz.blackshot.auto.service.IServiceBookService;
-import kz.blackshot.auto.service.IUserService;
+import kz.blackshot.auto.model.*;
+import kz.blackshot.auto.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -22,7 +18,13 @@ public class CoreController {
     private IUserService userService;
 
     @Autowired
+    private IFeedbackService feedbackService;
+
+    @Autowired
     private IRolesService rolesService;
+
+    @Autowired
+    private IRatingService ratingService;
 
     @Autowired
     private IServiceBookService serviceBookService;
@@ -43,14 +45,28 @@ public class CoreController {
         return userService.getUserByUsernameAndPassword(username, password);
     }
 
-    @RequestMapping(value = "/serviceBook" , method = RequestMethod.GET)
+    @RequestMapping(value = "/serviceBook/read" , method = RequestMethod.GET)
     public List<ServiceBook> readServiceBook(){ return  serviceBookService.getAllServiceBook();
     }
 
-    @RequestMapping(value = "/serviceBookMaintenance", method = RequestMethod.GET)
+    @RequestMapping(value = "/serviceBookMaintenance/read", method = RequestMethod.GET)
     public List<ServiceBookContent> readServiceBookContent() { return serviceBookContentService.getAllServiceBookContent();
 
     }
+    @RequestMapping(value = "/feedbackService/read", method = RequestMethod.GET)
+    public List<Feedback> readFeedback() { return feedbackService.getAllFeedback();
+    }
+    @RequestMapping(value = "/feedbackService/readOne", method = RequestMethod.GET)
+    public Feedback readOneFeedback(@PathVariable(name = "id") Integer id) { return feedbackService.getFeedbackById(id);
+    }
+    @RequestMapping(value = "/ratingService/read", method = RequestMethod.GET)
+    public List<Rating> readRating() { return ratingService.getAllRating();
+    }
+    @RequestMapping(value = "/ratingService/readOne", method = RequestMethod.GET)
+    public Rating readOneRating(@PathVariable(name = "id") Integer id) { return ratingService.getRating(id);
+    }
+
+
 
 
 }
