@@ -1,12 +1,7 @@
 package kz.blackshot.auto.controller;
 
-import kz.blackshot.auto.model.ServiceBook;
-import kz.blackshot.auto.model.ServiceBookContent;
-import kz.blackshot.auto.model.Users;
-import kz.blackshot.auto.service.IRolesService;
-import kz.blackshot.auto.service.IServiceBookContentService;
-import kz.blackshot.auto.service.IServiceBookService;
-import kz.blackshot.auto.service.IUserService;
+import kz.blackshot.auto.model.*;
+import kz.blackshot.auto.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -30,6 +25,15 @@ public class CoreController {
     @Autowired
     private IServiceBookContentService serviceBookContentService;
 
+    @Autowired
+    private IServiceMaintenanceService serviceMaintenanceService;
+
+    @Autowired
+    private IServiceMaintenanceFeedbackMapService serviceMaintenanceFeedbackMapService;
+
+    @Autowired
+    private IUserServiceMaintenanceMapService userServiceMaintenanceMapService;
+
 
 
     @RequestMapping(value = "/users/read", method = RequestMethod.GET)
@@ -51,6 +55,19 @@ public class CoreController {
     public List<ServiceBookContent> readServiceBookContent() { return serviceBookContentService.getAllServiceBookContent();
 
     }
+
+    @RequestMapping(value = "/serviceMaintenance", method = RequestMethod.GET)
+    public List<ServiceMaintenance> readServiceMaintenance() { return  serviceMaintenanceService.getAllServiceMaintenance();
+    }
+
+    @RequestMapping(value = "/serviceMaintenanceFeedbackMap", method = RequestMethod.GET)
+    public List<ServiceMaintenanceFeedbackMap> readServiceMaintenanceFeedbackMap() { return serviceMaintenanceFeedbackMapService.getAllServiceMaintenanceFeedbackMap();
+    }
+
+    @RequestMapping(value = "/userServiceMaintenanceMap", method = RequestMethod.GET)
+    public List<UserServiceMaintenanceMap> readUserServiceMaintenanceMap() { return userServiceMaintenanceMapService.getAllUserServiceMaintenanceMap();}
+
+
 
 
 }
