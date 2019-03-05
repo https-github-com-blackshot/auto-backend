@@ -32,6 +32,15 @@ public class CoreController {
     @Autowired
     private IServiceBookContentService serviceBookContentService;
 
+    @Autowired
+    private IServiceMaintenanceService serviceMaintenanceService;
+
+    @Autowired
+    private IServiceMaintenanceFeedbackMapService serviceMaintenanceFeedbackMapService;
+
+    @Autowired
+    private IUserServiceMaintenanceMapService userServiceMaintenanceMapService;
+
 
 
     @RequestMapping(value = "/users/read", method = RequestMethod.GET)
@@ -65,6 +74,19 @@ public class CoreController {
     @RequestMapping(value = "/ratingService/readOne", method = RequestMethod.GET)
     public Rating readOneRating(@PathVariable(name = "id") Integer id) { return ratingService.getRating(id);
     }
+
+
+
+    @RequestMapping(value = "/serviceMaintenance", method = RequestMethod.GET)
+    public List<ServiceMaintenance> readServiceMaintenance() { return  serviceMaintenanceService.getAllServiceMaintenance();
+    }
+
+    @RequestMapping(value = "/serviceMaintenanceFeedbackMap", method = RequestMethod.GET)
+    public List<ServiceMaintenanceFeedbackMap> readServiceMaintenanceFeedbackMap() { return serviceMaintenanceFeedbackMapService.getAllServiceMaintenanceFeedbackMap();
+    }
+
+    @RequestMapping(value = "/userServiceMaintenanceMap", method = RequestMethod.GET)
+    public List<UserServiceMaintenanceMap> readUserServiceMaintenanceMap() { return userServiceMaintenanceMapService.getAllUserServiceMaintenanceMap();}
 
 
 
