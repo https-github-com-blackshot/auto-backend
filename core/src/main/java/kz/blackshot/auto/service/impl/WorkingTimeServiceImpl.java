@@ -4,9 +4,11 @@ import kz.blackshot.auto.model.WorkingTime;
 import kz.blackshot.auto.repository.WorkingTimeRepository;
 import kz.blackshot.auto.service.IWorkingTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class WorkingTimeServiceImpl implements IWorkingTimeService{
 
     @Autowired

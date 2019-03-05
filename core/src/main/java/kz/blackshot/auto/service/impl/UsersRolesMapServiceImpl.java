@@ -1,41 +1,43 @@
 package kz.blackshot.auto.service.impl;
 
 import kz.blackshot.auto.model.UsersRolesMap;
-import kz.blackshot.auto.repository.UsersRolesMapReposity;
+import kz.blackshot.auto.repository.UsersRolesMapRepository;
 import kz.blackshot.auto.service.IUsersRolesMapService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UsersRolesMapServiceImpl implements IUsersRolesMapService{
 
     @Autowired
-    private UsersRolesMapReposity usersRolesMapReposity;
+    private UsersRolesMapRepository usersRolesMapRepository;
 
     @Override
     public List<UsersRolesMap> getAll() {
-        return usersRolesMapReposity.findAll();
+        return usersRolesMapRepository.findAll();
     }
 
     @Override
     public UsersRolesMap get(Integer id) {
-        return usersRolesMapReposity.getOne(id);
+        return usersRolesMapRepository.getOne(id);
     }
 
     @Override
     public UsersRolesMap create(UsersRolesMap usersRolesMap) {
-        return usersRolesMapReposity.save(usersRolesMap);
+        return usersRolesMapRepository.save(usersRolesMap);
     }
 
     @Override
     public UsersRolesMap update(UsersRolesMap usersRolesMap) {
-        return usersRolesMapReposity.save(usersRolesMap);
+        return usersRolesMapRepository.save(usersRolesMap);
     }
 
     @Override
     public void delete(Integer id) {
-        UsersRolesMap usersRolesMap = usersRolesMapReposity.getOne(id);
+        UsersRolesMap usersRolesMap = usersRolesMapRepository.getOne(id);
         if(usersRolesMap != null)
-            usersRolesMapReposity.delete(usersRolesMap);
+            usersRolesMapRepository.delete(usersRolesMap);
     }
 }
