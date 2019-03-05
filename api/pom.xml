@@ -89,8 +89,10 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <webResources>
+                        <!--<mainClass>kz.blackshot.auto.ApiApplication</mainClass>-->
+                        <!--<outputDirectory>webapps</outputDirectory>-->
                         <resource>
-                            <directory>../../</directory>
+                            <directory>C:/Work/auto-frontend/dist</directory>
                         </resource>
                     </webResources>
                 </configuration>
