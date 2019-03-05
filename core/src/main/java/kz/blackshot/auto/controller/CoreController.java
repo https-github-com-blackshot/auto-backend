@@ -60,8 +60,20 @@ public class CoreController {
 
     @RequestMapping(value = "/serviceBookMaintenance/read", method = RequestMethod.GET)
     public List<ServiceBookContent> readServiceBookContent() { return serviceBookContentService.getAllServiceBookContent();
-
     }
+    @RequestMapping(value = "/serviceMaintenance", method = RequestMethod.GET)
+    public List<ServiceMaintenance> readServiceMaintenance() { return  serviceMaintenanceService.getAllServiceMaintenance();
+    }
+
+    @RequestMapping(value = "/serviceMaintenanceFeedbackMap", method = RequestMethod.GET)
+    public List<ServiceMaintenanceFeedbackMap> readServiceMaintenanceFeedbackMap() { return serviceMaintenanceFeedbackMapService.getAllServiceMaintenanceFeedbackMap();
+    }
+
+    @RequestMapping(value = "/userServiceMaintenanceMap", method = RequestMethod.GET)
+    public List<UserServiceMaintenanceMap> readUserServiceMaintenanceMap() { return userServiceMaintenanceMapService.getAllUserServiceMaintenanceMap();}
+
+
+
     @RequestMapping(value = "/feedbackService/read", method = RequestMethod.GET)
     public List<Feedback> readFeedback() { return feedbackService.getAllFeedback();
     }
@@ -75,19 +87,7 @@ public class CoreController {
     public Rating readOneRating(@PathVariable(name = "id") Integer id) { return ratingService.getRating(id);
     }
 
-
-
-    @RequestMapping(value = "/serviceMaintenance", method = RequestMethod.GET)
-    public List<ServiceMaintenance> readServiceMaintenance() { return  serviceMaintenanceService.getAllServiceMaintenance();
-    }
-
-    @RequestMapping(value = "/serviceMaintenanceFeedbackMap", method = RequestMethod.GET)
-    public List<ServiceMaintenanceFeedbackMap> readServiceMaintenanceFeedbackMap() { return serviceMaintenanceFeedbackMapService.getAllServiceMaintenanceFeedbackMap();
-    }
-
-    @RequestMapping(value = "/userServiceMaintenanceMap", method = RequestMethod.GET)
-    public List<UserServiceMaintenanceMap> readUserServiceMaintenanceMap() { return userServiceMaintenanceMapService.getAllUserServiceMaintenanceMap();}
-
+    
 
 
 
