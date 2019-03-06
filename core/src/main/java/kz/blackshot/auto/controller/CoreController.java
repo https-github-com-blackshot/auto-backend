@@ -3,11 +3,10 @@ package kz.blackshot.auto.controller;
 import kz.blackshot.auto.model.*;
 import kz.blackshot.auto.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -47,11 +46,24 @@ public class CoreController {
     @Autowired
     private IUserServiceMaintenanceMapService userServiceMaintenanceMapService;
 
-
-
     @RequestMapping(value = "/users/read", method = RequestMethod.GET)
     public List<Users> readUsers(){
         return userService.getAllUsers();
+    }
+
+    @PostMapping("/users/create")
+    public Users createUser(@Valid @RequestBody Users user){
+        return userService.create(user);
+    }
+
+    @PutMapping("/users/update")
+    public Users updateUser(@Valid @RequestBody Users user){
+        return userService.update(user);
+    }
+
+    @DeleteMapping("/users/delete")
+    public void deleteUser(@Valid @RequestBody Users user){
+        userService.delete(user.getId());
     }
 
     @GetMapping("/auth/{username}/{password}")
@@ -64,62 +76,92 @@ public class CoreController {
     public List<ServiceBook> readServiceBook(){ return  serviceBookService.getAllServiceBook();
     }
 
-    @RequestMapping(value = "/serviceBookMaintenance/read", method = RequestMethod.GET)
-    public List<ServiceBookContent> readServiceBookContent() { return serviceBookContentService.getAllServiceBookContent();
+    @PostMapping("/serviceBook/create")
+    public ServiceBook createServiceBook(@Valid @RequestBody ServiceBook serviceBook){
+        return serviceBookService.create(serviceBook);
     }
+
+    @PutMapping("/serviceBook/update")
+    public ServiceBook updateServiceBook(@Valid @RequestBody ServiceBook serviceBook){
+        return serviceBookService.update(serviceBook);
+    }
+
+    @DeleteMapping("/serviceBook/delete")
+    public void deleteServiceBook(@Valid @RequestBody ServiceBook serviceBook){
+        serviceBookService.delete(serviceBook.getId());
+    }
+
+    @RequestMapping(value = "/serviceBookMaintenance/read", method = RequestMethod.GET)
+    public List<ServiceBookContent> readServiceBookContent() {
+        return serviceBookContentService.getAllServiceBookContent();
+    }
+
     @RequestMapping(value = "/serviceMaintenance", method = RequestMethod.GET)
-    public List<ServiceMaintenance> readServiceMaintenance() { return  serviceMaintenanceService.getAllServiceMaintenance();
+    public List<ServiceMaintenance> readServiceMaintenance() {
+        return serviceMaintenanceService.getAllServiceMaintenance();
     }
 
     @RequestMapping(value = "/serviceMaintenanceFeedbackMap", method = RequestMethod.GET)
-    public List<ServiceMaintenanceFeedbackMap> readServiceMaintenanceFeedbackMap() { return serviceMaintenanceFeedbackMapService.getAllServiceMaintenanceFeedbackMap();
+    public List<ServiceMaintenanceFeedbackMap> readServiceMaintenanceFeedbackMap() {
+        return serviceMaintenanceFeedbackMapService.getAllServiceMaintenanceFeedbackMap();
     }
 
     @RequestMapping(value = "/userServiceMaintenanceMap", method = RequestMethod.GET)
-    public List<UserServiceMaintenanceMap> readUserServiceMaintenanceMap() { return userServiceMaintenanceMapService.getAllUserServiceMaintenanceMap();}
-
-
+    public List<UserServiceMaintenanceMap> readUserServiceMaintenanceMap() {
+        return userServiceMaintenanceMapService.getAllUserServiceMaintenanceMap();
+    }
 
     @RequestMapping(value = "/feedbackService/read", method = RequestMethod.GET)
-    public List<Feedback> readFeedback() { return feedbackService.getAllFeedback();
+    public List<Feedback> readFeedback() {
+        return feedbackService.getAllFeedback();
     }
-    @RequestMapping(value = "/feedbackService/readOne", method = RequestMethod.GET)
-    public Feedback readOneFeedback(@PathVariable(name = "id") Integer id) { return feedbackService.getFeedbackById(id);
+
+    @RequestMapping(value = "/feedbackService/readOne/{id}", method = RequestMethod.GET)
+    public Feedback readOneFeedback(@PathVariable(name = "id") Integer id) {
+        return feedbackService.getFeedbackById(id);
     }
 
 
     @RequestMapping(value = "/ratingService/read", method = RequestMethod.GET)
-    public List<Rating> readRating() { return ratingService.getAllRating();
+    public List<Rating> readRating() {
+        return ratingService.getAllRating();
     }
-    @RequestMapping(value = "/ratingService/readOne", method = RequestMethod.GET)
-    public Rating readOneRating(@PathVariable(name = "id") Integer id) { return ratingService.getRating(id);
+
+    @RequestMapping(value = "/ratingService/readOne/{id}", method = RequestMethod.GET)
+    public Rating readOneRating(@PathVariable(name = "id") Integer id) {
+        return ratingService.getRating(id);
     }
 
 
     @RequestMapping(value = "/rolesService/read", method = RequestMethod.GET)
-    public List<Roles> readRoles() { return rolesService.getRoles();
+    public List<Roles> readRoles() {
+        return rolesService.getRoles();
     }
-    @RequestMapping(value = "/rolesService/readOne", method = RequestMethod.GET)
-    public Roles readOneRoles(@PathVariable(name = "id") Integer id) { return rolesService.get(id);
+
+    @RequestMapping(value = "/rolesService/readOne/{id}", method = RequestMethod.GET)
+    public Roles readOneRoles(@PathVariable(name = "id") Integer id) {
+        return rolesService.get(id);
     }
 
 
     @RequestMapping(value = "/workingTimeService/read", method = RequestMethod.GET)
-    public List<WorkingTime> readWorkingTime() { return workingTimeService.getAll();
-    }
-    @RequestMapping(value = "/workingTimeService/readOne", method = RequestMethod.GET)
-    public WorkingTime readOneWorkingTime(@PathVariable(name = "id") Integer id) { return workingTimeService.get(id);
+    public List<WorkingTime> readWorkingTime() {
+        return workingTimeService.getAll();
     }
 
-
-
-
+    @RequestMapping(value = "/workingTimeService/readOne/{id}", method = RequestMethod.GET)
+    public WorkingTime readOneWorkingTime(@PathVariable(name = "id") Integer id) {
+        return workingTimeService.get(id);
+    }
 
     @RequestMapping(value = "/usersRolesMapService/read", method = RequestMethod.GET)
-    public List<UsersRolesMap> readUsersRolesMap() { return usersRolesMapService.getAll() ;
+    public List<UsersRolesMap> readUsersRolesMap() {
+        return usersRolesMapService.getAll() ;
     }
-    @RequestMapping(value = "/usersRolesMapService/readOne", method = RequestMethod.GET)
-    public UsersRolesMap readOneUsersRolesMapService(@PathVariable(name = "id") Integer id) { return usersRolesMapService.get(id);
+
+    @RequestMapping(value = "/usersRolesMapService/readOne/{id}", method = RequestMethod.GET)
+    public UsersRolesMap readOneUsersRolesMapService(@PathVariable(name = "id") Integer id) {
+        return usersRolesMapService.get(id);
     }
 
 
