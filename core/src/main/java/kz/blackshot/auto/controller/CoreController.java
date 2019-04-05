@@ -61,9 +61,9 @@ public class CoreController {
         return userService.update(user);
     }
 
-    @DeleteMapping("/users/delete")
-    public void deleteUser(@Valid @RequestBody Users user){
-        userService.delete(user.getId());
+    @DeleteMapping("/users/delete/{id}")
+    public void deleteUser(@PathVariable(name = "id") Integer id){
+        userService.delete(id);
     }
 
     @GetMapping("/auth/{username}/{password}")

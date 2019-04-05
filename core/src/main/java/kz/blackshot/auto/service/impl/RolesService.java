@@ -25,11 +25,13 @@ public class RolesService implements IRolesService {
 
     @Override
     public Roles create(Roles role) {
+        role.setState(1);
         return rolesRepository.save(role);
     }
 
     @Override
     public Roles update(Roles role) {
+        role.setState(1);
         return rolesRepository.save(role);
     }
 

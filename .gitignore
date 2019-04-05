@@ -1,2 +1,4 @@
 /.idea/
 *.iml
+/core/target
+/api/target

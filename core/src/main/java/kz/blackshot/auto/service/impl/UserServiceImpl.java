@@ -36,11 +36,13 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public Users create(Users user) {
+        user.setState(1);
         return userRepository.save(user);
     }
 
     @Override
     public Users update(Users user) {
+        user.setState(1);
         return userRepository.save(user);
     }
 
