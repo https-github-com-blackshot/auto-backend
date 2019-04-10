@@ -51,6 +51,12 @@ public class CoreController {
         return userService.getAllUsers();
     }
 
+
+    @RequestMapping(value = "/roles/read", method = RequestMethod.GET)
+    public List<Roles> readRoles(){
+        return rolesService.getRoles();
+    }
+
     @PostMapping("/users/create")
     public Users createUser(@Valid @RequestBody Users user){
         return userService.create(user);
@@ -61,9 +67,26 @@ public class CoreController {
         return userService.update(user);
     }
 
+    @PostMapping("/roles/create")
+    public Roles createRole(@Valid @RequestBody Roles role){
+        return rolesService.create(role);
+    }
+
+    @PutMapping("/roles/update")
+    public Roles updateRole(@Valid @RequestBody Roles role){
+        return rolesService.update(role);
+    }
+
+
     @DeleteMapping("/users/delete/{id}")
     public void deleteUser(@PathVariable(name = "id") Integer id){
         userService.delete(id);
+    }
+
+
+    @DeleteMapping("/roles/delete/{id}")
+    public void deleteRole(@PathVariable(name = "id") Integer id){
+        rolesService.delete(id);
     }
 
     @GetMapping("/auth/{username}/{password}")
@@ -132,11 +155,6 @@ public class CoreController {
         return ratingService.getRating(id);
     }
 
-
-    @RequestMapping(value = "/rolesService/read", method = RequestMethod.GET)
-    public List<Roles> readRoles() {
-        return rolesService.getRoles();
-    }
 
     @RequestMapping(value = "/rolesService/readOne/{id}", method = RequestMethod.GET)
     public Roles readOneRoles(@PathVariable(name = "id") Integer id) {
