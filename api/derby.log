@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue Mar 05 21:48:52 ALMT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-4e8b-15c9-000013acb400 
+Fri Apr 12 00:59:21 ALMT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016a-0dc4-c4b2-0000105b38f0 
 on database directory memory:C:\Work\auto-backend\api\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
 Loaded from file:/C:/Users/tima-/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
