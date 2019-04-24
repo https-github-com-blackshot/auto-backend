@@ -15,7 +15,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "roles", schema = "auto_core_db")
+@Table(name = "service_book", schema = "auto_core_db")
 public class ServiceBook extends BaseAuditable {
 
     @Id

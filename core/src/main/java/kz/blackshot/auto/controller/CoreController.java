@@ -207,18 +207,33 @@ public class CoreController {
     }
 
     /*****************************************************************************************
-     * UserServiceMaintenanceMap API
+     * Rating API
      *
      */
 
-    @RequestMapping(value = "/ratingService/read", method = RequestMethod.GET)
+    @RequestMapping(value = "/rating/read", method = RequestMethod.GET)
     public List<Rating> readRating() {
         return ratingService.getAllRating();
     }
 
-    @RequestMapping(value = "/ratingService/readOne/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/rating/readOne/{id}", method = RequestMethod.GET)
     public Rating readOneRating(@PathVariable(name = "id") Integer id) {
         return ratingService.getRating(id);
+    }
+
+    @PostMapping("/rating/create")
+    public Rating createRating(@Valid @RequestBody Rating rating){
+        return ratingService.createRating(rating);
+    }
+
+    @PutMapping("/rating/update")
+    public Rating updateRating(@Valid @RequestBody Rating rating){
+        return ratingService.updateRating(rating);
+    }
+
+    @DeleteMapping("/rating/delete/{id}")
+    public void deleteRating(@PathVariable(name = "id") Integer id){
+        ratingService.deleteRating(id);
     }
 
     /*****************************************************************************************
