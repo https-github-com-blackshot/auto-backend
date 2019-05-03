@@ -1,6 +1,7 @@
 package kz.blackshot.auto.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import kz.blackshot.auto.util.BaseAuditable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table (name = "service_maintenance", schema = "auto_core_db")
 public class ServiceMaintenance extends BaseAuditable {
 
@@ -28,7 +30,7 @@ public class ServiceMaintenance extends BaseAuditable {
 
     @Basic
     @Column(name = "description")
-    private String decription;
+    private String description;
 
     @Basic
     @Column(name = "address")
@@ -40,8 +42,11 @@ public class ServiceMaintenance extends BaseAuditable {
 
     @Basic
     @Column(name = "rating_id")
-    private int ratingId;
+    private Integer ratingId;
 
+    @ManyToOne
+    @JoinColumn(name = "rating_id", insertable = false, updatable = false)
+    private Rating rating;
 
 
 }
