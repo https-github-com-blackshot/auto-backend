@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Fri Apr 12 00:59:21 ALMT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016a-0dc4-c4b2-0000105b38f0 
-on database directory memory:C:\Work\auto-backend\api\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
-Loaded from file:/C:/Users/tima-/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+Mon Apr 22 12:28:56 ALMT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016a-43bb-b41c-00000211bd48 
+on database directory memory:C:\work\auto-backend\api\testdb with class loader sun.misc.Launcher$AppClassLoader@1d16e93 
+Loaded from file:/C:/Users/sulei/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_201-b09
-user.dir=C:\Work\auto-backend\api
+java.runtime.version=1.8.0_144-b01
+user.dir=C:\work\auto-backend\api
 os.name=Windows 10
-os.arch=amd64
+os.arch=x86
 os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
