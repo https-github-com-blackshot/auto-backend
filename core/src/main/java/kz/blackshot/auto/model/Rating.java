@@ -1,5 +1,6 @@
 package kz.blackshot.auto.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import kz.blackshot.auto.util.BaseAuditable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "rating", schema = "auto_core_db")
 public class Rating extends BaseAuditable {
 
