@@ -1,5 +1,6 @@
 package kz.blackshot.auto.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import kz.blackshot.auto.util.BaseAuditable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Users extends BaseAuditable {
     private String username;
 
     @Basic
+    @JsonIgnore
     @Column(name = "password")
     private String password;
 

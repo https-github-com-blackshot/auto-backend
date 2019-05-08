@@ -1,5 +1,6 @@
 package kz.blackshot.auto.controller;
 
+import javafx.concurrent.Service;
 import kz.blackshot.auto.model.*;
 import kz.blackshot.auto.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,7 +114,11 @@ public class CoreController {
      */
 
     @RequestMapping(value = "/serviceBook/read" , method = RequestMethod.GET)
-    public List<ServiceBook> readServiceBook(){ return  serviceBookService.getAllServiceBook();
+    public List<ServiceBook> readServiceBook(){
+
+        System.out.println(serviceBookService.getAllServiceBook());
+        return  serviceBookService.getAllServiceBook();
+
     }
 
     @PostMapping("/serviceBook/create")

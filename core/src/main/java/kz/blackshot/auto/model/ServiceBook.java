@@ -35,4 +35,8 @@ public class ServiceBook extends BaseAuditable {
     @Column(name = "user_id")
     private int userId;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private Users user;
+
 }
