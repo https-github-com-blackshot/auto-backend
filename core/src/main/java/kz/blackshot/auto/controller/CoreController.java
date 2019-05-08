@@ -262,8 +262,13 @@ public class CoreController {
     }
 
     @RequestMapping(value = "/usersRolesMapService/readOne/{id}", method = RequestMethod.GET)
-    public UsersRolesMap readOneUsersRolesMapService(@PathVariable(name = "id") Integer id) {
+    public UsersRolesMap readOneUsersRolesMap(@PathVariable(name = "id") Integer id) {
         return usersRolesMapService.get(id);
+    }
+
+    @RequestMapping(value = "/users/role/map/byUserId/{userId}", method = RequestMethod.GET)
+    public UsersRolesMap readUserRoleMapByUserId(@PathVariable(name = "userId") Integer userId) {
+        return usersRolesMapService.getByUserId(userId);
     }
 
 

@@ -25,6 +25,11 @@ public class UsersRolesMapServiceImpl implements IUsersRolesMapService{
     }
 
     @Override
+    public UsersRolesMap getByUserId(Integer userId) {
+        return usersRolesMapRepository.findByUserId(userId);
+    }
+
+    @Override
     public UsersRolesMap create(UsersRolesMap usersRolesMap) {
         return usersRolesMapRepository.save(usersRolesMap);
     }
