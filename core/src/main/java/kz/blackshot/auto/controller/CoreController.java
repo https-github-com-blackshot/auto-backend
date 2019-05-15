@@ -78,6 +78,8 @@ public class CoreController {
         userService.delete(id);
     }
 
+    @RequestMapping(value = "/user/byId", method = RequestMethod.GET)
+    public Users getUserById(@PathVariable(name="id") Integer id) {return userService.getById(id);}
     /*****************************************************************************************
      * Roles API
      *
