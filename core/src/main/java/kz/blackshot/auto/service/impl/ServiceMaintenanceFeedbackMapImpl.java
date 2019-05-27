@@ -20,6 +20,11 @@ public class ServiceMaintenanceFeedbackMapImpl implements IServiceMaintenanceFee
     }
 
     @Override
+    public List<ServiceMaintenanceFeedbackMap> getServiceMaintenanceFeedbackMapByServiceId(Integer id) {
+        return serviceMaintenanceFeedbackMapRepository.findAllByServiceMaintenanceId(id);
+    }
+
+    @Override
     public ServiceMaintenanceFeedbackMap get(Integer id) {
         return serviceMaintenanceFeedbackMapRepository.getOne(id);
     }

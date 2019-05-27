@@ -65,6 +65,12 @@ public class CoreController {
 
     @PostMapping("/users/create")
     public Users createUser(@Valid @RequestBody Users user){
+        UsersRolesMap usersRolesMap = new UsersRolesMap();
+
+        usersRolesMap.setRoleId(2);
+        usersRolesMap.setUserId(user.getId());
+        usersRolesMapService.create(usersRolesMap);
+
         return userService.create(user);
     }
 
@@ -78,7 +84,7 @@ public class CoreController {
         userService.delete(id);
     }
 
-    @RequestMapping(value = "/user/byId", method = RequestMethod.GET)
+    @GetMapping("/users/byId/{id}")
     public Users getUserById(@PathVariable(name="id") Integer id) {return userService.getById(id);}
     /*****************************************************************************************
      * Roles API
@@ -138,6 +144,7 @@ public class CoreController {
         serviceBookService.delete(serviceBook.getId());
     }
 
+
     /*****************************************************************************************
      * ServiceBookContent API
      *
@@ -187,6 +194,15 @@ public class CoreController {
     public List<ServiceMaintenanceFeedbackMap> readServiceMaintenanceFeedbackMap() {
         return serviceMaintenanceFeedbackMapService.getAllServiceMaintenanceFeedbackMap();
     }
+    @GetMapping(value = "/serviceMaintenanceFeedbackMap/{service_id}")
+    public List<ServiceMaintenanceFeedbackMap> getFeedbackByServiceId(@PathVariable(name = "service_id") Integer service_id){
+        return serviceMaintenanceFeedbackMapService.getServiceMaintenanceFeedbackMapByServiceId(service_id);
+    }
+    @PostMapping("/serviceMaintenanceFeedbackMap/create")
+    public ServiceMaintenanceFeedbackMap createServiceMaintenanceFeedbackMap(@Valid @RequestBody ServiceMaintenanceFeedbackMap serviceMaintenanceFeedbackMap){
+        return serviceMaintenanceFeedbackMapService.create(serviceMaintenanceFeedbackMap);
+    }
+
 
     /*****************************************************************************************
      * UserServiceMaintenanceMap API
@@ -211,6 +227,10 @@ public class CoreController {
     @RequestMapping(value = "/feedbackService/readOne/{id}", method = RequestMethod.GET)
     public Feedback readOneFeedback(@PathVariable(name = "id") Integer id) {
         return feedbackService.getFeedbackById(id);
+    }
+    @PostMapping("/feedback/create")
+    public Feedback createFeedback(@Valid @RequestBody Feedback feedback){
+        return feedbackService.create(feedback);
     }
 
     /*****************************************************************************************

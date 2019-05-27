@@ -28,4 +28,12 @@ public class ServiceMaintenanceFeedbackMap extends BaseAuditable {
     @Basic
     @Column(name = "feedback_id")
     private int feedbackId;
+
+    @ManyToOne
+    @JoinColumn(name = "feedback_id", insertable = false, updatable = false)
+    private Feedback feedback;
+
+    @ManyToOne
+    @JoinColumn(name = "service_maintenance_id", insertable = false, updatable = false)
+    private ServiceMaintenance serviceMaintenance;
 }

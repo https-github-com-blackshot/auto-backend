@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -30,5 +31,9 @@ public class Feedback extends BaseAuditable {
     @Basic
     @Column(name = "content")
     private String content;
+
+    @CreatedDate
+    @Column(name = "applied_date")
+    private Timestamp appliedDate;
 
 }
