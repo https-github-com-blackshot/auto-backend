@@ -28,7 +28,6 @@ public class Users extends BaseAuditable {
     private String username;
 
     @Basic
-    @JsonIgnore
     @Column(name = "password")
     private String password;
 

@@ -63,14 +63,21 @@ public class CoreController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/users/create")
-    public Users createUser(@Valid @RequestBody Users user){
+    @PostMapping("/users/register")
+    public Users registerNewUser(@Valid @RequestBody Users user){
+        user = userService.create(user);
+
         UsersRolesMap usersRolesMap = new UsersRolesMap();
 
         usersRolesMap.setRoleId(2);
         usersRolesMap.setUserId(user.getId());
         usersRolesMapService.create(usersRolesMap);
 
+        return user;
+    }
+
+    @PostMapping("/users/create")
+    public Users createUser(@Valid @RequestBody Users user){
         return userService.create(user);
     }
 
