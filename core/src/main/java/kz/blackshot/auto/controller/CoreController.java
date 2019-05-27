@@ -219,7 +219,7 @@ public class CoreController {
      *
      */
 
-    @RequestMapping(value = "/feedbackService/read", method = RequestMethod.GET)
+    @RequestMapping(value = "/feedback/read", method = RequestMethod.GET)
     public List<Feedback> readFeedback() {
         return feedbackService.getAllFeedback();
     }
