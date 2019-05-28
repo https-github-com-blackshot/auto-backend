@@ -310,5 +310,21 @@ public class CoreController {
         return usersRolesMapService.getByUserId(userId);
     }
 
+    @PostMapping("/users/role/map/create")
+    public UsersRolesMap createUsersRolesMap(@Valid @RequestBody UsersRolesMap usersRolesMap){
+        return usersRolesMapService.create(usersRolesMap);
+    }
+
+    @PutMapping("/users/role/map/update")
+    public UsersRolesMap updateUsersRolesMap(@Valid @RequestBody UsersRolesMap usersRolesMap){
+        return usersRolesMapService.update(usersRolesMap);
+    }
+
+    @DeleteMapping("/users/role/map/delete/{id}")
+    public void deleteUsersRolesMap(@PathVariable(name = "id") Integer id){
+        usersRolesMapService.delete(id);
+    }
+
+
 
 }

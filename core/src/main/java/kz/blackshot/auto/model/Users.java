@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -45,8 +46,7 @@ public class Users extends BaseAuditable {
 
     @Basic
     @Column(name = "birthdate")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date birthDate;
+    private Timestamp birthDate;
 
     @Basic
     @Column(name = "email")
