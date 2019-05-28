@@ -172,6 +172,11 @@ public class CoreController {
         return serviceMaintenanceService.getAllServiceMaintenance();
     }
 
+    @RequestMapping(value = "/serviceMaintenance/search/{name}", method = RequestMethod.GET)
+    public List<ServiceMaintenance> searchServiceMaintenance(@PathVariable(name = "name") String name) {
+        return serviceMaintenanceService.search(name);
+    }
+
     @GetMapping(value = "/serviceMaintenance/{id}")
     public ServiceMaintenance readServiceMaintenanceById(@PathVariable(name = "id") Integer id) {
         return serviceMaintenanceService.get(id);

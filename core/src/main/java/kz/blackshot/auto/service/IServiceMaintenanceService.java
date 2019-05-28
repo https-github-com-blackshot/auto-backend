@@ -8,6 +8,8 @@ public interface IServiceMaintenanceService {
 
     List<ServiceMaintenance> getAllServiceMaintenance();
 
+    List<ServiceMaintenance> search(String name);
+
     ServiceMaintenance get(Integer id);
 
     ServiceMaintenance create(ServiceMaintenance serviceMaintenance);

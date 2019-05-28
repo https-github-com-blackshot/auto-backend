@@ -21,6 +21,11 @@ public class ServiceMaintenanceImpl implements IServiceMaintenanceService {
     }
 
     @Override
+    public List<ServiceMaintenance> search(String name) {
+        return serviceMaintenanceRepository.search(name);
+    }
+
+    @Override
     public ServiceMaintenance get(Integer id) {
         return serviceMaintenanceRepository.getOne(id);
     }
