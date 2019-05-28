@@ -1,6 +1,8 @@
 package kz.blackshot.auto.service.impl;
 
+import kz.blackshot.auto.model.Rating;
 import kz.blackshot.auto.model.ServiceMaintenance;
+import kz.blackshot.auto.repository.RatingRepository;
 import kz.blackshot.auto.repository.ServiceMaintenanceRepository;
 import kz.blackshot.auto.service.IServiceMaintenanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ public class ServiceMaintenanceImpl implements IServiceMaintenanceService {
 
     @Autowired
     private ServiceMaintenanceRepository serviceMaintenanceRepository;
+    @Autowired
+    private RatingRepository ratingRepository;
 
 
     @Override
@@ -32,6 +36,18 @@ public class ServiceMaintenanceImpl implements IServiceMaintenanceService {
 
     @Override
     public ServiceMaintenance create(ServiceMaintenance serviceMaintenance) {
+        Rating rating = new Rating();
+
+        rating.setVeryLow(0);
+        rating.setLow(0);
+        rating.setMedium(0);
+        rating.setHigh(0);
+        rating.setVeryHigh(0);
+
+        rating = ratingRepository.save(rating);
+
+        serviceMaintenance.setRatingId(rating.getId());
+
         return serviceMaintenanceRepository.save(serviceMaintenance);
     }
 
